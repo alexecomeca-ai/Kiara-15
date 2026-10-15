@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#063c31">
+<title>Un cuento para Kiara 💚</title>
+<style>
+:root{--deep:#062f28;--green:#0b5b46;--emerald:#138565;--gold:#f4d889;--cream:#fff9e9;--pink:#f8dfe6}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at top,#17694e 0,#082f29 46%,#031c1a 100%);color:var(--cream);font-family:Georgia,'Times New Roman',serif;min-height:100vh;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.25;background-image:radial-gradient(#ffe9a6 1px,transparent 1.5px),radial-gradient(#c5ffdb 1px,transparent 1.5px);background-size:83px 83px,127px 127px;background-position:0 0,40px 50px;animation:twinkle 5s ease-in-out infinite alternate}
+@keyframes twinkle{from{opacity:.12}to{opacity:.35}}
+.wrap{width:min(920px,92vw);margin:auto;position:relative;z-index:1}
+.hero{min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;padding:42px 0}
+.panel{background:linear-gradient(145deg,rgba(5,48,39,.91),rgba(14,88,64,.86));border:1px solid rgba(244,216,137,.7);box-shadow:0 0 45px #021b19a8,inset 0 0 35px #e9d18a0c;border-radius:28px;padding:clamp(24px,6vw,56px);position:relative;overflow:hidden}
+.panel:before,.panel:after{content:"✦";position:absolute;color:var(--gold);font-size:24px;opacity:.75}.panel:before{top:18px;left:22px}.panel:after{right:22px;bottom:18px}
+.eyebrow{letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font:600 11px Arial,sans-serif}
+h1{font-size:clamp(2.5rem,8vw,5.5rem);line-height:.98;font-weight:normal;margin:18px 0;color:#fff7d9;text-shadow:0 3px 25px #d9b95855}
+h2{font-size:clamp(1.8rem,5vw,3rem);font-weight:normal;color:#ffedb5;margin:0 0 15px}
+p{font-size:clamp(1rem,2.5vw,1.2rem);line-height:1.8;color:#fff9eb}
+.subtitle{max-width:590px;margin:0 auto 26px}
+button,.btn{font-family:Arial,sans-serif;font-weight:bold;letter-spacing:.03em;border:1px solid #ffe7a1;background:linear-gradient(135deg,#f6dfa0,#c5a34f);color:#173d2e;padding:14px 21px;border-radius:999px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .2s,filter .2s;font-size:.92rem}
+button:hover,.btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+button:focus-visible,.btn:focus-visible{outline:3px solid white;outline-offset:4px}
+.ornament{font-size:2.2rem;letter-spacing:.4em;color:var(--gold);margin:12px 0}
+section{padding:58px 0}
+.section-head{text-align:center;margin-bottom:25px}
+.small{font:12px Arial,sans-serif;letter-spacing:.12em;color:#d8e7c9;text-transform:uppercase}
+.gifts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.gift{min-height:170px;width:100%;border-radius:22px;background:linear-gradient(145deg,#0d654b,#073b32);border:1px solid #d9bd69;color:#fff8dd;padding:22px 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;box-shadow:0 12px 30px #001d1980}
+.gift .emoji{font-size:2.2rem}.gift strong{font:600 1.05rem Georgia,serif}.gift span:last-child{font:12px Arial,sans-serif;color:#e2d8b1}
+.message{display:none;margin-top:16px;border:1px solid #d7bd73;border-radius:18px;background:#fff8e9;color:#173b2e;padding:22px;line-height:1.8;font-size:1.05rem;animation:appear .35s ease}
+.message.show{display:block}
+.message p{color:#173b2e;font-size:1rem;margin:0 0 10px}
+@keyframes appear{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.letter{background:linear-gradient(145deg,#fff7e5,#f5e4bd);color:#264637;border-radius:8px 24px 8px 24px;padding:clamp(22px,5vw,40px);box-shadow:0 15px 45px #001a17a0;position:relative}
+.letter p{color:#264637}.letter .sign{font-style:italic;text-align:right;color:#976f23}
+.song-card{text-align:center;border:1px solid #d8c075;border-radius:24px;padding:25px;background:#07392fbb}
+.song-icon{font-size:3rem}
+footer{text-align:center;padding:28px 0 50px;color:#d6d9b8;font-size:.9rem}
+.lily{position:absolute;font-size:2.5rem;opacity:.6;filter:drop-shadow(0 0 12px #a7f4c0);animation:float 7s ease-in-out infinite;pointer-events:none}
+.l1{top:8%;left:5%}.l2{bottom:8%;right:5%;animation-delay:2s}.l3{top:17%;right:9%;font-size:1.5rem;animation-delay:1s}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-13px) rotate(7deg)}}
+#finale{display:none;text-align:center}.heart{font-size:2rem;color:#f5c3ce;animation:beat 1.2s infinite}@keyframes beat{50%{transform:scale(1.18)}}
+@media(min-width:680px){.gifts{grid-template-columns:repeat(4,minmax(0,1fr))}.gift{min-height:190px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="lily l1" aria-hidden="true">✿</div><div class="lily l2" aria-hidden="true">❀</div><div class="lily l3" aria-hidden="true">✦</div>
+<header class="hero">
+  <div class="wrap">
+    <div class="panel">
+      <div class="ornament">✧ ❀ ✧</div>
+      <div class="eyebrow">Un pequeño cuento hecho para ti</div>
+      <h1>Feliz 15,<br><span style="color:#f4d889">Kiara</span></h1>
+      <p class="subtitle">Hoy el mundo celebra tus quince años, y yo quería regalarte algo que no se encuentre en una tienda: un pedacito de todo lo bonito que siento por ti. 💚</p>
+      <button onclick="document.getElementById('regalos').scrollIntoView({behavior:'smooth'})">Entrar a tu cuento ✨</button>
+      <div class="ornament">♕　❀　♕</div>
+      <div class="small">Desliza para descubrir tus sorpresas</div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+<section id="regalos">
+  <div class="section-head"><div class="eyebrow">Cuatro pequeñas sorpresas</div><h2>Regalitos para mi princesa</h2><p>Toca cada uno. Los preparé pensando en ti.</p></div>
+  <div class="gifts">
+    <button class="gift" onclick="openGift(0)"><span class="emoji">🐸</span><strong>Un deseo</strong><span>toca para abrir</span></button>
+    <button class="gift" onclick="openGift(1)"><span class="emoji">💌</span><strong>Una cartita</strong><span>toca para abrir</span></button>
+    <button class="gift" onclick="openGift(2)"><span class="emoji">🌷</span><strong>Algo que admiro</strong><span>toca para abrir</span></button>
+    <button class="gift" onclick="openGift(3)"><span class="emoji">🌟</span><strong>Mi promesa</strong><span>toca para abrir</span></button>
+  </div>
+  <div id="giftMessage" class="message" role="status" aria-live="polite"></div>
+</section>
+
+<section>
+  <div class="section-head"><div class="eyebrow">Con todo mi corazón</div><h2>Una carta para ti</h2></div>
+  <article class="letter">
+    <p>Mi Kiara:</p>
+    <p>Hoy cumples quince años, una edad llena de sueños, nuevos caminos y momentos que algún día recordarás con una sonrisa. Ojalá la vida te regale razones de sobra para ser feliz, personas que te cuiden bonito y oportunidades para cumplir cada cosa que llevas en el corazón.</p>
+    <p>Quiero que sepas que para mí eres mucho más que una fecha especial. Me encanta tenerte en mi vida, compartir contigo y descubrir, poquito a poquito, todo lo que te hace ser tú. No necesito que seas perfecta ni que todos tus días sean buenos; deseo que puedas ser tú misma conmigo, incluso cuando estés cansada, triste o no sepas cómo explicar lo que sientes.</p>
+    <p>Si algún día dudas de lo valiosa que eres, ojalá recuerdes que hay alguien que ve en ti una personita increíble, con una luz muy tuya. Quiero acompañarte, celebrar tus logros, escucharte y seguir construyendo recuerdos a tu lado, sin apurarnos y cuidando lo bonito que tenemos.</p>
+    <p>Feliz quinceañera, mi princesa. Que nunca te falten motivos para soñar y que la vida te sorprenda con cosas tan bonitas como las que mereces. Hoy y siempre, deseo verte sonreír. 💚</p>
+    <p class="sign">Con muchísimo amor, para mi Kiara. ♡</p>
+  </article>
+</section>
+
+<section>
+  <div class="section-head"><div class="eyebrow">Nuestra banda sonora</div><h2>Una canción para ti</h2></div>
+  <div class="song-card">
+    <div class="song-icon">🎧</div>
+    <h2 style="font-size:1.65rem">“Committed”</h2>
+    <p>Rauw Alejandro</p>
+    <p>Porque hay canciones que dicen cosas que a veces el corazón no sabe cómo explicar. Esta va dedicada a ti, Kiara. 💚</p>
+    <a class="btn" href="https://open.spotify.com/search/Committed%20Rauw%20Alejandro" target="_blank" rel="noopener noreferrer">Escuchar nuestra canción ↗</a>
+    <p style="font-size:.85rem;color:#d7e7d3">La canción se abre en Spotify; no se reproduce automáticamente.</p>
+  </div>
+</section>
+
+<section>
+  <div class="panel" style="text-align:center">
+    <div class="eyebrow">Y antes de terminar…</div>
+    <h2>Hay algo más para ti</h2>
+    <p>Si llegaste hasta aquí, toca el botón, cumpleañera bonita. ✨</p>
+    <button onclick="showFinale()">Abrir mi última sorpresa 💚</button>
+    <div id="finale">
+      <div class="ornament">✧ 🌷 ✧</div>
+      <div class="heart">♡</div>
+      <h2>Te amo, Kiara</h2>
+      <p>Gracias por existir, por ser tú y por dejarme formar parte de tu historia. Ojalá este nuevo capítulo de tus quince esté lleno de magia, amor y sueños que se hagan realidad. Y ojalá me permitas seguir a tu lado, escribiendo contigo muchos recuerdos más.</p>
+      <p style="color:#f4d889">Feliz cumpleaños, mi princesa. 👑</p>
+      <div class="ornament">❀ ♕ ❀</div>
+    </div>
+  </div>
+</section>
+</main>
+<footer>Hecho con amor para Kiara · Su cuento apenas comienza 💚</footer>
+<script>
+const gifts = [
+  {title:"Mi deseo para ti 🌟",text:"Deseo que nunca apagues esa luz que te hace especial. Que tus sueños crezcan contigo, que encuentres alegría en las cosas pequeñas y que, incluso en los días difíciles, recuerdes lo mucho que vales. Hoy pido que la vida te trate bonito, mi Kiara."},
+  {title:"Una cartita para guardar 💌",text:"Si pudiera envolverte un regalo invisible, sería la tranquilidad de saber que eres amada. Quiero que conmigo puedas reír sin medida, hablar con confianza y sentirte acompañada. No tengo todas las respuestas, pero sí muchas ganas de escucharte y cuidarte."},
+  {title:"Algo que admiro de ti 🌷",text:"Admiro esa forma tuya de ser, los pequeños detalles que quizá ni notas y la persona en la que te estás convirtiendo. No tienes que demostrarle nada a nadie para merecer cosas bonitas. Para mí, tu esencia ya es algo precioso."},
+  {title:"Mi promesa para nosotros 🤍",text:"No te prometo una historia perfecta, porque ninguna lo es. Te prometo intentar hablar con sinceridad, escucharte, respetarte y cuidar lo que compartimos. Quiero que nuestro amor sea un lugar seguro para los dos, donde podamos crecer sin dejar de ser nosotros mismos."}
+];
+function openGift(i){
+ const box=document.getElementById('giftMessage');
+ box.innerHTML='<h3>'+gifts[i].title+'</h3><p>'+gifts[i].text+'</p>';
+ box.classList.add('show');
+ box.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function showFinale(){
+ const f=document.getElementById('finale');f.style.display='block';
+ f.scrollIntoView({behavior:'smooth',block:'center'});
+}
+</script>
+</body>
+</html>
