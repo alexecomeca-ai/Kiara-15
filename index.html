@@ -34,5 +34,208 @@
 <article class="glass-card"><div style="font-size:2rem">🕊️</div><h3>Mereces tranquilidad</h3><p class="small">Que te rodee gente con la que puedas hablar con sinceridad, respirar tranquila y ser tú sin miedo a que te juzguen.</p></article>
 <article class="glass-card"><div style="font-size:2rem">🌙</div><h3>También puedes descansar</h3><p class="small">No todos los días tienen que ser increíbles. A veces, hacer lo mejor que puedes y darte un respiro ya es muchísimo.</p></article>
 </div></section>
-<section class="section"><div class="section-head"><div class="eyebrow">07 · una constelación de buenos deseos</div><h2>Si pudiera regalarte algo invisible… ✨</h2><p>Serían cosas que no se envuelven en papel, pero que ojalá te acompañen mucho tiempo.</p></div><div class="glass-card timeline">
-<div class="moment"><div class="momen
+<section class="section">
+  <div class="section-head">
+    <div class="eyebrow">07 · una constelación de buenos deseos</div>
+    <h2>Un cielo lleno de deseos para ti ✨</h2>
+    <p>Que cada lucecita te recuerde que mereces cosas bonitas.</p>
+  </div>
+  <div class="glass-card">
+    <div class="stars" id="constellation">
+      <button class="star" onclick="wish(0)">✦</button>
+      <button class="star" onclick="wish(1)">✦</button>
+      <button class="star" onclick="wish(2)">✦</button>
+      <button class="star" onclick="wish(3)">✦</button>
+      <button class="star" onclick="wish(4)">✦</button>
+    </div>
+    <div class="hidden-note" id="wishNote"></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div class="eyebrow">08 · un último mensajito</div>
+    <h2>Para los días difíciles 💌</h2>
+    <p>También mereces palabras bonitas cuando el día no sale como esperabas.</p>
+  </div>
+  <div class="glass-card">
+    <p>No tienes que poder con todo siempre, Kiara. Date tiempo, descansa cuando lo necesites y recuerda que un día complicado no define tu historia. Ojalá nunca te falten motivos para volver a sonreír, personas que te escuchen y sueños que te emocionen.</p>
+    <button onclick="compliment()">Regálame una frase bonita 🌷</button>
+    <div class="reveal-line" id="complimentText"></div>
+  </div>
+</section>
+
+<div class="toast" id="toast" role="status"></div>
+<footer class="footer">Hecho con cariño por Alexey 💚 · Feliz cumpleaños, Kiara 🐸✨</footer>
+</main>
+
+<script>
+(function () {
+  const byId = id => document.getElementById(id);
+
+  window.reveal = function (id) {
+    const el = byId(id);
+    if (!el) return;
+    el.classList.toggle('show');
+  };
+
+  window.finalSurprise = function () {
+    const el = byId('finalNote');
+    if (el) el.classList.toggle('show');
+  };
+
+  let caught = 0;
+  window.catchFly = function () {
+    caught = Math.min(caught + 1, 5);
+    const text = byId('gameText');
+    const progress = byId('gameProgress');
+    const pond = byId('pond');
+
+    if (text) {
+      text.textContent = caught === 5
+        ? '¡Misión cumplida! La ranita reunió sus cinco luciérnagas. 🐸✨'
+        : '¡Muy bien! Llevas ' + caught + ' de 5 luciérnagas. ✨';
+    }
+    if (progress) progress.style.width = (caught * 20) + '%';
+    if (pond) pond.innerHTML = '🐸 ' + '✨'.repeat(caught + 1);
+  };
+
+  window.resetGame = function () {
+    caught = 0;
+    if (byId('gameText')) byId('gameText').textContent = 'La ranita está lista. ¿Le ayudas?';
+    if (byId('gameProgress')) byId('gameProgress').style.width = '0%';
+    if (byId('pond')) byId('pond').innerHTML = '🐸 <span class="firefly">✨</span>';
+  };
+
+  const wishes = [
+    'Que nunca te falten razones para sonreír. 🌷',
+    'Que tengas valor para perseguir tus sueños. 🌟',
+    'Que encuentres amistades sinceras. 🤍',
+    'Que siempre puedas ser tú misma. 🦋',
+    'Que tus 15 estén llenos de momentos preciosos. 💚'
+  ];
+
+  window.wish = function (i) {
+    const note = byId('wishNote');
+    if (note) {
+      note.textContent = wishes[i] || wishes[0];
+      note.classList.add('show');
+    }
+  };
+
+  const phrases = [
+    'Tu forma de ser tiene algo muy especial. 💚',
+    'No necesitas ser perfecta para merecer cosas bonitas. 🌼',
+    'Ojalá hoy encuentres una razón para sonreír. ✨',
+    'Tus sueños merecen tiempo, cariño y valentía. 🌙',
+    'Nunca olvides que tu voz y tus sentimientos importan. 🕊️'
+  ];
+
+  window.compliment = function () {
+    const el = byId('complimentText');
+    if (el) el.textContent = phrases[Math.floor(Math.random() * phrases.length)];
+  };
+
+  let musicOn = false;
+  let audioContext = null;
+  let oscillator = null;
+  let gain = null;
+
+  window.toggleMusic = function () {
+    const button = byId('musicToggle');
+
+    if (musicOn) {
+      try { if (gain) gain.gain.value = 0; } catch (e) {}
+      try { if (oscillator) oscillator.stop(); } catch (e) {}
+      oscillator = null;
+      musicOn = false;
+      if (button) {
+        button.textContent = '♫ Música: abrir';
+        button.setAttribute('aria-pressed', 'false');
+      }
+      return;
+    }
+
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) {
+        alert('Tu navegador no permite los efectos de sonido. Puedes abrir la canción desde su enlace.');
+        return;
+      }
+
+      audioContext = audioContext || new AudioCtx();
+      if (audioContext.state === 'suspended') audioContext.resume();
+
+      oscillator = audioContext.createOscillator();
+      gain = audioContext.createGain();
+      oscillator.type = 'sine';
+      oscillator.frequency.value = 261.63;
+      gain.gain.value = 0.025;
+      oscillator.connect(gain);
+      gain.connect(audioContext.destination);
+      oscillator.start();
+
+      musicOn = true;
+      if (button) {
+        button.textContent = '♫ Música: cerrar';
+        button.setAttribute('aria-pressed', 'true');
+      }
+    } catch (e) {
+      alert('No se pudo activar el sonido en este navegador.');
+    }
+  };
+
+  window.toggleMotion = function () {
+    document.body.classList.toggle('reduced-motion');
+    const reduced = document.body.classList.contains('reduced-motion');
+    document.documentElement.style.scrollBehavior = reduced ? 'auto' : 'smooth';
+    const toast = byId('toast');
+    if (toast) {
+      toast.textContent = reduced ? 'Efectos reducidos ✨' : 'Efectos activados ✨';
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 1800);
+    }
+  };
+
+  const messages = [
+    'Que tu nueva etapa esté llena de sueños. ✨',
+    'Que nunca olvides lo valiosa que eres. 💚',
+    'Que la vida te sorprenda con cosas bonitas. 🌷',
+    'Que encuentres calma incluso en los días difíciles. 🌙',
+    'Que siempre conserves tu magia. 🐸'
+  ];
+
+  const stars = byId('stars');
+  if (stars) {
+    stars.innerHTML = '';
+    messages.concat([
+      'Que tengas aventuras inolvidables. 🌿',
+      'Que te rodee gente sincera. 🤍',
+      'Que puedas reír sin miedo. ☀️',
+      'Que tus metas te ilusionen. 🌟',
+      'Que nunca dejes de aprender. 🦋',
+      'Que tengas paz en el corazón. 🕊️',
+      'Que te sientas querida. 💌',
+      'Que confíes en tus capacidades. 🌱',
+      'Que encuentres belleza en lo sencillo. 🌼',
+      'Que tus 15 sean un recuerdo precioso. 💚'
+    ]).forEach((message, i) => {
+      const button = document.createElement('button');
+      button.className = 'star';
+      button.textContent = '✦';
+      button.setAttribute('aria-label', 'Abrir deseo ' + (i + 1));
+      button.addEventListener('click', function () {
+        button.classList.add('opened');
+        const box = byId('starMessage');
+        if (box) box.textContent = '⭐ ' + message;
+        const opened = stars.querySelectorAll('.star.opened').length;
+        if (byId('count')) byId('count').textContent = opened + ' de 15 deseos descubiertos';
+        if (byId('progress')) byId('progress').style.width = (opened / 15 * 100) + '%';
+      });
+      stars.appendChild(button);
+    });
+  }
+})();
+</script>
+</body>
+</html>
